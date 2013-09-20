@@ -305,15 +305,80 @@ p {
  .login{
      
      float: right;
-     text-align: right;          
+     
      position: relative;
      z-index: 1000;
-     margin: 5px;
-     font-weight: bold;
-     font-size: 18px;
+     margin: 5px 5px 0px 0px;
+
  }
  
  .foto_user{
      width: 30px;
      height: 30px;
  }
+ 
+ 
+ 
+ /**************/   /*Boton de login de facebook*/
+    .facebook_btn{
+        width:192px;
+        height:39px;
+        
+        background: #425C97;
+        cursor:pointer;
+        clear:left;
+    }
+    .icono, .texto{
+        
+        
+        height:37px;
+    }
+    .icono .f1, .icono .f2, .icono .f3, .icono .f4{
+        position: absolute;
+        background-color:#FFFFFF;
+    }
+    .icono .f1{
+        width:10px;
+        height:4px;
+        top:4px;
+        right:5px;
+        -moz-border-radius-topleft:5px;
+        border-top-left-radius: 5px;
+    }
+    .icono .f2{
+        width:5px;
+        height:6px;
+        top:8px;
+        right:10px;
+    }
+    .icono .f3{
+        width:14px;
+        height:5px;
+        top:14px;
+        right:5px;
+    }
+    .icono .f4{
+        width:5px;
+        height:15px;
+        bottom:3px;
+        right:10px;
+    }
+    .icono{
+
+        width:40px;
+        float:left;
+        position:relative;
+    }
+    .texto{
+        
+        width:148px;
+        float:left;
+        font: bold 20px Arial, Helvetica, sans-serif;
+        text-shadow: 1px 1px 1px #3A538C;
+        text-align:center;
+        color:#FFFFFF;
+        letter-spacing: 1px;
+        line-height: 37px;
+    }
+    
+    /*******************************/

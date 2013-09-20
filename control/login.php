@@ -58,6 +58,9 @@
     }
     
     
+
+    session_start();
+    
     
     if(isset($_GET['email'])){
         
@@ -89,9 +92,12 @@
         
         
     }else {        
+        echo "cerrar sesion";
         if(isset($_GET['cerrar'])){
+            echo "cerrar sesion2";
             $login = new Login();                
             $login->cerrarsesion();
+            echo "cerrar sesion";
         }        
 
     }

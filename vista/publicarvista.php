@@ -68,6 +68,9 @@
             $this->seccion = file_get_contents('../templates/fpublicar.html');           
             $this->dic_encabezado["mensaje"] = "Ingresa tu ADV, pronto lograras negociar";            
             
+            
+            
+            
             $this->login  = str_ireplace("{nombre_usuario}", $nombre_usuario, $this->login);          
             
             $this->actualizar_diccionarios();
@@ -76,6 +79,21 @@
             
             
         }
+        
+        public function refactory_login(){
+            
+            $globales = new Global_var();
+            $this->seccion = file_get_contents('../templates/nologin.html');           
+            
+            $this->seccion ='<section id="center">'.$this->seccion.'</section>';
+            
+            $this->dic_encabezado["mensaje"] = "Para publicar porfavor, Ingresa";                        
+            $this->login  ="";                      
+            $this->actualizar_diccionarios();            
+            $this->refactory_total();            
+            
+        }
+        
 
         public function refactory_total(){
             

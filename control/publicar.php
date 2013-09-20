@@ -11,7 +11,8 @@
         public $vista;
         public $model;
     
-        public function ControlPublicar(){
+        public function __construct() {          
+            
             
             $this->vista = new PublicarVista();
             $this->model = new Conexion();
@@ -34,6 +35,12 @@
             
 
 
+        }
+        
+        public function mostrarlogin(){
+            
+            $this->vista->refactory_login();
+            
         }
         
         
@@ -110,28 +117,31 @@
         
     }
     
-//    session_start();
-//    
-//    $obj = new ControlPublicar();
-//    
-//    if(isset($_POST["enviar"])){   
-//        
-//        if($obj->insertar_adv()){
-//            $obj->agradecer();
-//        }else{
-//            $obj->error();
-//        }      
-//
-//    }else{
-//        if(isset($_SESSION['nombre'])){
-            //$obj->verfomulario(isset($_SESSION['nombre']));        
+    session_start();
     
     $obj = new ControlPublicar();
-            $obj->verfomulario("chares");        
-//        }else{
-//            // mostrar modal de registro.
-//        }
-//    }
+    
+    if(isset($_POST["enviar"])){   
+        
+        if($obj->insertar_adv()){
+            $obj->agradecer();
+        }else{
+            $obj->error();
+        }      
+
+    }else{
+        
+        if(isset($_SESSION['nombre'])){            
+            $obj->verfomulario(isset($_SESSION['nombre']));            
+     
+        }else{
+            // mostrar modal de registro.
+            //echo "<h1>No esta logeaddo</h1>";
+            
+            $obj->mostrarlogin();
+            
+        }
+    }
     
 
 

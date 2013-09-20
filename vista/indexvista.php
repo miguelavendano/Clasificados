@@ -10,7 +10,7 @@
         private $adv;
         private $dic_base;
         private $login;
-
+        private $contenido;
         
         
         public function __construct() {
@@ -23,7 +23,7 @@
 
             
             $this->dic_base = array('encabezado'=>$this->encabezado,
-                                    'contenido'=>$this->seccion,
+                                    'contenido'=>$this->contenido,
                                     'login' =>$this->login);            
             
             
@@ -33,7 +33,7 @@
             
             
             $this->dic_base = array('encabezado'=>$this->encabezado,
-                                    'contenido'=>$this->seccion,
+                                    'contenido'=>$this->contenido,
                                     'login' =>$this->login);            
             
             
@@ -55,48 +55,49 @@
       
         
         
-        public function refactory_contenido($datos){            
+        public function refactory_advs_seccion($datos){            
             
             $resultados="";
             $adv = $this->adv;                       
-            
-            //for($c=1; count($datos)+1; $c++){                
-                
-                $resultados .= '<div class="section s1 centrado" >
-                                    <div class="inner">
-                                        <h1>prueba</h1>
-                                    </div>
 
-                                    <div class="avisos og-grid" id="og-grid">';                                            
-                foreach($datos as $calve => $valor){
-                    $sitio=array_shift($datos);
-                    $aux = $adv;
-                    
-                    $aux = str_ireplace("{fecha}", $sitio["fecha"], $aux);
-                    $aux = str_ireplace("{titulo_adv}", $sitio["titulo"], $aux);
-                    $aux = str_ireplace("{img}", $sitio["imagen"], $aux);                
-                    $aux = str_ireplace("{descripcion}", $sitio["descripcion_1"], $aux);
-                    $resultados .= $aux;
-                }
-                    
+            foreach($datos as $calve => $valor){
+                $sitio=array_shift($datos);
+                $aux = $adv;
+
+                $aux = str_ireplace("{fecha}", $sitio["fecha"], $aux);
+                $aux = str_ireplace("{titulo_adv}", $sitio["titulo"], $aux);
+                $aux = str_ireplace("{img}", $sitio["imagen"], $aux);                
+                $aux = str_ireplace("{descripcion}", $sitio["descripcion_1"], $aux);
+                $resultados .= $aux;
+            }
             
-                
-                
-                $resultados .= '    </div>
-                                    <a href="#" class="button button-rounded button-flat-action">Ver mas</a>
-                                </div>';
-            //}
-            
-            
-            
-            $this->seccion = $resultados;
-            $this->actualizar_diccionarios();
-    
+            return $resultados;
             
             
         }
         
+        public function refactory_seccion($id_seccion, $descripcin, $html_advs){
+            
+            
+            $sec = $this->seccion;  // realizo una copia del html de la seccion
+            
+            $sec = str_ireplace("{n_seccion}",$id_seccion , $sec);
+            $sec = str_ireplace("{titulo_seccion}", $descripcin, $sec);
+            $sec = str_ireplace("{advs}", $html_advs, $sec);                
+            
+            return $sec;            
+            
+        }
         
+        
+        public function set_contenido($contendohtml){
+            
+            $this->contenido = $contendohtml;
+            
+            $this->actualizar_diccionarios();
+            
+            
+        }
         
         
         public function refactory_total(){
