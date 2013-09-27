@@ -121,7 +121,7 @@
             }            
             
             
-            echo $this->base;
+            return $this->base;
             
             
             
