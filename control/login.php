@@ -12,7 +12,7 @@
             $this->modelo = new LoginModel();
         }
         
-        public function iniciarsesion($id, $nom_user, $id_f ){
+        public function iniciarsesion($id, $nom_user, $id_f ){ 
             
             session_start();
             
@@ -62,23 +62,23 @@
     session_start();
     
     
-    if(isset($_GET['email'])){
+    if(isset($_GET['email'])){  // comprueba existe la varible email por get
         
-        $login = new Login();                
+        $login = new Login(); // Crea la instancia de la clase 
         
         if($login->VerificarDireccionCorreo($_GET['email'])){  // verifica si tiene un formato de correo -> seguridad
             
-            $respuesta =  $login->validar($_GET['email'], "123");
-            if($respuesta){
+            $respuesta =  $login->validar($_GET['email'], "123");  // valida email y contraseña. Retorna datos del usuario. si el usuario no existe retorna null
+            if($respuesta){  
 
-                $login->iniciarsesion($respuesta[0]['id'], $respuesta[0]['nombre'], $respuesta[0]['id_facebook']);
+                $login->iniciarsesion($respuesta[0]['id'], $respuesta[0]['nombre'], $respuesta[0]['id_facebook']);  // inicia la sesion
                 header("Location: /Clasificados/control/perfil.php?id=".$respuesta[0]['id']);
                 
 
             }else{  // si no existe entonces -> registrarlo
-
-
-
+                
+                
+                
             }            
 
         }else{
