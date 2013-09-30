@@ -12,9 +12,20 @@
             $this->conexion = new Conexion();
          }
          
+        public function insertar_img($id_adv, $archivo){
+            
+            $insert_img = "INSERT INTO foto (id_clasificados, ruta) 
+            VALUES (".$id_adv.", '".$archivo."');";                
+            
+            
+            $confirmar = $this->conexion->ejecutar_query($insert_img);
+            
+            return $confirmar;
+
+        }   
+        
          
-         
-        public function insertar_adv(){           
+        public function insertar_adv($descrip_1, $descrip_det, $lugar, $valor, $id, $titulo){           
 
 
                 $insert_adv= "
@@ -28,20 +39,18 @@
                     id_seccion,
                     titulo) 
                     VALUES (
-                    '".$_POST["descrip_1"]."', 
-                    '".$_POST["descrip_det"]."', 
-                    '".$_POST["lugar"]."',
-                    ".$_POST["valor"].",
+                    '".$descrip_1."', 
+                    '".$descrip_det."', 
+                    '".$lugar."',
+                    ".$valor.",
                     '".date('d/m/ 20y')."', 
-                    ".$_SESSION["id"].", 
+                    ".$id.", 
                     2, 
-                    '".$_POST["titulo"]."');";                               
+                    '".$titulo."');";
+                                                               
                 
+                $confirmar = $this->conexion->ejecutar_query($insert_adv);                                
                 
-                $confirmar = $this->model->ejecutar_query($insert_adv);
-                
-                
-                $this->subir_imagenes($id_adv_user[0]['id_clasificado']);
 
                 return $confirmar;
         }
@@ -54,7 +63,7 @@
                                 WHERE cl.id_usuario = ".$id."
                                 ";                    
 
-                $id_adv_user = $this->model->get_resultados_query($consulta_id); // consulta el id del ultimo adv qeu se acaba de insertar                
+                $id_adv_user = $this->conexion->get_resultados_query($consulta_id); // consulta el id del ultimo adv qeu se acaba de insertar                
                 
                 return $id_adv_user[0]['id_clasificado'];
                 

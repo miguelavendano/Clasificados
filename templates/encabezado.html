@@ -14,7 +14,18 @@
         <div id="logo"></div>
         <h1>Bienvenido a tu Adv </h1>
         <p>Te invitamos a ingresar a la comunida mas importante de Anuncios en los Llanos Orientales!</p>
-        <span class="button-wrap" id="bPrincipal"><a href="publicar.php" class="button button-circle button-flat button-flat-action glow">Clasificados</a></span>
+        <span class="button-wrap" id="bPrincipal"><a href="publicar.php" class="button button-circle button-flat button-flat-action glow">Clasificados</a></span>        
+        
+        <form action = "resultado.php" method="POST" enctype="multipart/form-data">	                
+            <input type="text" id="buscar" name="buscar" /><br><br>
+            <select>
+                <option value ="sydney">Autos</option>
+                <option value ="melbourne">Inmuebles</option>
+                <option value ="cromwell" selected>Empleo</option>
+                <option value ="queenstown">Todos</option>
+            </select>            
+            <input type="submit" value="Buscar" name="enviar">             
+        </form>            
     </div>
 
     <br class="clear">

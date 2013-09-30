@@ -6,7 +6,7 @@
 
         public  $db_host = 'localhost';
         public  $db_user = 'root';
-        public  $db_pass = '123';
+        public  $db_pass = '';
         public  $db_name = 'clasificados';
         public $conexion;
         
