@@ -348,7 +348,11 @@ var Grid = (function() {
 			this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
 			this.$loading = $( '<div class="og-loading"></div>' );
 			this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
-			this.$closePreview = $( '<span class="og-close"></span>' );
+			
+                    
+
+                    
+                        this.$closePreview = $( '<span class="og-close"></span>' );
 			this.$previewInner = $( '<div style="border: 1px solid red;" class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
 			this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
 			// append preview element to the item
@@ -359,6 +363,31 @@ var Grid = (function() {
 			}
 		},
 		update : function( $item ) {
+            
+            
+            
+            var carrusel="	"
+                               +" <div class='image_carousel'> "
+                               +"   <div id='foo2'> "
+                               +"           <img src='/examples/images/small/basketball.jpg' alt='basketball' width='140' height='140' /> "
+                               +"           <img src='/examples/images/small/beachtree.jpg' alt='beachtree' width='140' height='140' /> "
+                               +"           <img src='/examples/images/small/cupcackes.jpg' alt='cupcackes' width='140' height='140' /> "
+                               +"            <img src='/examples/images/small/hangmat.jpg' alt='hangmat' width='140' height='140' /> "
+                               +"           <img src='/examples/images/small/new_york.jpg' alt='new york' width='140' height='140' /> "
+                                +"          <img src='/examples/images/small/laundry.jpg' alt='laundry' width='140' height='140' /> "
+                                 +"         <img src='/examples/images/small/mom_son.jpg' alt='mom son' width='140' height='140' /> "
+                                 +"         <img src='/examples/images/small/picknick.jpg' alt='picknick' width='140' height='140' /> "
+                                 +"         <img src='/examples/images/small/shoes.jpg' alt='shoes' width='140' height='140' /> "
+                                 +"         <img src='/examples/images/small/paris.jpg' alt='paris' width='140' height='140' /> "
+                                 +"         <img src='/examples/images/small/sunbading.jpg' alt='sunbading' width='140' height='140' /> "
+                                 +"         <img src='/examples/images/small/yellow_couple.jpg' alt='yellow couple' width='140' height='140' /> "
+                                +"  </div> "
+                               +"   <div class='clearfix'></div> "
+                               +"   <a class='prev' id='foo2_prev' href='#'><span>prev</span></a> "
+                               +"   <a class='next' id='foo2_next' href='#'><span>next</span></a> "
+                               +"   <div class='pagination' id='foo2_pag'></div> "
+                               +"  </div> "; 
+            
 
 			if( $item ) {
 				this.$item = $item;
@@ -377,7 +406,10 @@ var Grid = (function() {
 			current = this.$item.index();
 
 			// update preview´s content
-			var $itemEl = this.$item.children( 'a' ),
+		
+                    //se actulaica lso valores 
+                    
+                    var $itemEl = this.$item.children( 'a' ),
 				eldata = {
 					href : $itemEl.attr( 'href' ),
 					largesrc : $itemEl.data( 'largesrc' ),
@@ -407,9 +439,38 @@ var Grid = (function() {
 						self.$fullimage.find( 'img' ).remove();
 						self.$largeImg = $img.fadeIn( 350 );
 						self.$fullimage.append( self.$largeImg );
+                                                self.$fullimage.html(carrusel);
+                                                
+                                                
+                                                    // activa el carrusel
+                                                    $('#foo2').carouFredSel({
+                                                            circular: true,
+                                                            infinite: false,
+                                                            height:'500',
+                                                            auto 	: false,
+                                                            prev	: {	
+                                                                    button: '#foo2_prev',
+                                                                    key	: 'left'
+                                                            },
+                                                            next	: { 
+                                                                    button	: '#foo2_next',
+                                                                    key		: 'right'
+                                                            },
+                                                            pagination	: '#foo2_pag'
+                                                      });
+
+                                                     
+                                                
+                                                
 					}
 				} ).attr( 'src', eldata.largesrc );	
 			}
+
+                        //agregando nueva estructura
+                   
+
+                            
+
 
 		},
 		open : function() {
