@@ -12,6 +12,8 @@
             $this->modelo = new LoginModel();
         }
         
+        
+        
         public function iniciarsesion($id, $nom_user, $id_f ){ 
             
             session_start();
